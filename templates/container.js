@@ -1,7 +1,9 @@
 import {connect} from "react-redux";
 import {COMPONENT_NAME} from '../components/COMPONENT_FILE_NAME';
 
-import * as ACTION_NAME from '../actions/ACTION_NAME';
+import {
+    changeValue
+} from '../actions/ACTION_NAME';
 
 const mapStateToProps = (state) => {
     return state.REDUCER_NAME;
