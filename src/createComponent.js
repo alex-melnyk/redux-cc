@@ -21,13 +21,13 @@ const R_COMPONENT_FILE = /COMPONENT_FILE_NAME/g;
  * Creates action.
  * @param component_name name of component.
  */
-function makeAction(component_name) {
+function makeAction(dest, component_name) {
     fs.readFile(path.join(TEMPLATES_DIR, 'action.js'), (err, data) => {
         if (err) throw err;
 
         const content = data.toString('utf-8');
 
-        fs.writeFile(path.join(GEN_DIR, 'actions', component_name.toLowerCase() + '.js'), content, (err) => {
+        fs.writeFile(path.join(dest, 'actions', component_name.toLowerCase() + '.js'), content, (err) => {
             if (err) throw err;
 
             console.log('Action file has been saved!');
@@ -40,7 +40,7 @@ function makeAction(component_name) {
  *
  * @param component_name name of component.
  */
-function makeReducer(component_name) {
+function makeReducer(dest, component_name) {
     fs.readFile(path.join(TEMPLATES_DIR, 'reducer.js'), (err, data) => {
         if (err) throw err;
 
@@ -48,7 +48,7 @@ function makeReducer(component_name) {
             .replace(R_ACTION, component_name.toLowerCase())
             .replace(R_REDUCER, lcc(component_name));
 
-        fs.writeFile(path.join(GEN_DIR, 'reducers', component_name.toLowerCase() + '.js'), content, (err) => {
+        fs.writeFile(path.join(dest, 'reducers', component_name.toLowerCase() + '.js'), content, (err) => {
             if (err) throw err;
 
             console.log('Reducer file has been saved!');
@@ -61,7 +61,7 @@ function makeReducer(component_name) {
  *
  * @param component_name name of component.
  */
-function makeContainer(component_name) {
+function makeContainer(dest, component_name) {
     fs.readFile(path.join(TEMPLATES_DIR, 'container.js'), (err, data) => {
         if (err) throw err;
 
@@ -71,7 +71,7 @@ function makeContainer(component_name) {
             .replace(R_COMPONENT, component_name)
             .replace(R_COMPONENT_FILE, component_name.toLowerCase());
 
-        fs.writeFile(path.join(GEN_DIR, 'containers', component_name.toLowerCase() + '.js'), content, (err) => {
+        fs.writeFile(path.join(dest, 'containers', component_name.toLowerCase() + '.js'), content, (err) => {
             if (err) throw err;
 
             console.log('Container file has been saved!');
@@ -84,14 +84,14 @@ function makeContainer(component_name) {
  *
  * @param component_name name of component.
  */
-function makeComponent(component_name) {
+function makeComponent(dest, component_name) {
     fs.readFile(path.join(TEMPLATES_DIR, 'component.jsx'), (err, data) => {
         if (err) throw err;
 
         const content = data.toString('utf-8')
             .replace(R_COMPONENT, component_name);
 
-        fs.writeFile(path.join(GEN_DIR, 'components', component_name.toLowerCase() + '.jsx'), content, (err) => {
+        fs.writeFile(path.join(dest, 'components', component_name.toLowerCase() + '.jsx'), content, (err) => {
             if (err) throw err;
 
             console.log('Component file has been saved!');
@@ -99,26 +99,26 @@ function makeComponent(component_name) {
     });
 }
 
-function createComponent(name, wrapped) {
+function createComponent(dest, name, wrapped) {
     try {
         if (wrapped) {
-            fs.mkdirSync(path.join(GEN_DIR, ACTIONS_DIR));
-            fs.mkdirSync(path.join(GEN_DIR, REDUCERS_DIR));
-            fs.mkdirSync(path.join(GEN_DIR, CONTAINERS_DIR));
+            fs.mkdirSync(path.join(dest, ACTIONS_DIR));
+            fs.mkdirSync(path.join(dest, REDUCERS_DIR));
+            fs.mkdirSync(path.join(dest, CONTAINERS_DIR));
         }
 
-        fs.mkdirSync(path.join(GEN_DIR, COMPONENTS_DIR));
+        fs.mkdirSync(path.join(dest, COMPONENTS_DIR));
     } catch (ex) {
         // console.log(err);
     }
 
     if (wrapped) {
-        makeAction(name);
-        makeReducer(name);
-        makeContainer(name);
+        makeAction(dest, name);
+        makeReducer(dest, name);
+        makeContainer(dest, name);
     }
 
-    makeComponent(name);
+    makeComponent(dest, name);
 }
 
 module.exports = createComponent;
