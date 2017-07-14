@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const createComponent = require('./src/createComponent');
 const createStructure = require('./src/createStructure');
 const ucc = require('uppercamelcase');
