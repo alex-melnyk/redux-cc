@@ -1,25 +1,25 @@
 {
-    "name": "redux-cc",
-    "version": "0.0.3",
-    "description": "",
-    "main": "index.js",
-    "preferGlobal": true,
-    "scripts": {
-        "start": "node index.js",
-        "test": "node index.js -s -e"
-    },
-    "bin": {
-        "redux-cc": "index.js"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/alex-melnyk/redux-cc.git"
-    },
-    "author": "Alex Melnyk",
-    "license": "ISC",
-    "dependencies": {
-        "camelcase": "^4.1.0",
-        "command-line-args": "^4.0.6",
-        "uppercamelcase": "^3.0.0"
-    }
+  "name": "redux-cc",
+  "version": "0.0.4",
+  "description": "",
+  "main": "index.js",
+  "preferGlobal": true,
+  "scripts": {
+    "start": "node index.js",
+    "test": "node index.js -s -e"
+  },
+  "bin": {
+    "redux-cc": "index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alex-melnyk/redux-cc.git"
+  },
+  "author": "Alex Melnyk",
+  "license": "ISC",
+  "dependencies": {
+    "camelcase": "^4.1.0",
+    "command-line-args": "^4.0.6",
+    "uppercamelcase": "^3.0.0"
+  }
 }
