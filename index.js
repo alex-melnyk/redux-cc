@@ -4,7 +4,7 @@ const createStructure = require('./src/createStructure');
 const ucc = require('uppercamelcase');
 const commandLineArgs = require('command-line-args');
 
-const DEFAULT_DIR = '.gen';
+const DEFAULT_DIR = 'src';
 
 const options = commandLineArgs([
     {name: 'comp', alias: 'c', type: String},

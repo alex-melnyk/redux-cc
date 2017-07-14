@@ -22,7 +22,7 @@ const R_COMPONENT_FILE = /COMPONENT_FILE_NAME/g;
  * @param component_name name of component.
  */
 function makeAction(dest, component_name) {
-    fs.readFile(path.join(TEMPLATES_DIR, 'action.js'), (err, data) => {
+    fs.readFile(path.join(__dirname, '..', TEMPLATES_DIR, 'action.js'), (err, data) => {
         if (err) throw err;
 
         const content = data.toString('utf-8');
@@ -41,7 +41,7 @@ function makeAction(dest, component_name) {
  * @param component_name name of component.
  */
 function makeReducer(dest, component_name) {
-    fs.readFile(path.join(TEMPLATES_DIR, 'reducer.js'), (err, data) => {
+    fs.readFile(path.join(__dirname, '..', TEMPLATES_DIR, 'reducer.js'), (err, data) => {
         if (err) throw err;
 
         const content = data.toString('utf-8')
@@ -62,7 +62,7 @@ function makeReducer(dest, component_name) {
  * @param component_name name of component.
  */
 function makeContainer(dest, component_name) {
-    fs.readFile(path.join(TEMPLATES_DIR, 'container.js'), (err, data) => {
+    fs.readFile(path.join(__dirname, '..', TEMPLATES_DIR, 'container.js'), (err, data) => {
         if (err) throw err;
 
         const content = data.toString('utf-8')
@@ -85,7 +85,7 @@ function makeContainer(dest, component_name) {
  * @param component_name name of component.
  */
 function makeComponent(dest, component_name) {
-    fs.readFile(path.join(TEMPLATES_DIR, 'component.jsx'), (err, data) => {
+    fs.readFile(path.join(__dirname, '..', TEMPLATES_DIR, 'component.jsx'), (err, data) => {
         if (err) throw err;
 
         const content = data.toString('utf-8')
