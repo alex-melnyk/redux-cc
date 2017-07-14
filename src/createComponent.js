@@ -99,6 +99,12 @@ function makeComponent(dest, component_name) {
     });
 }
 
+/**
+ *
+ * @param dest
+ * @param name
+ * @param wrapped
+ */
 function createComponent(dest, name, wrapped) {
     if (wrapped) {
         makeAction(dest, name);
