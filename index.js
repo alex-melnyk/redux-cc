@@ -1,5 +1,3 @@
-'use strict';
-
 const createComponent = require('./src/createComponent');
 const createStructure = require('./src/createStructure');
 const ucc = require('uppercamelcase');
@@ -15,8 +13,6 @@ const options = commandLineArgs([
     {name: 'directory', alias: 'd', type: String, defaultOption: true}
 ]);
 
-console.log(options);
-
 // ACTION -> REDUCER -> CONTAINER -> COMPONENT
 if (options.struct || options.struct === null) {
     createStructure(options.struct || DEFAULT_DIR);
@@ -26,7 +22,6 @@ if (options.comp || options.recomp) {
     const component_name = ucc(options.comp || options.recomp);
 
     const target = options.struct || options.directory || DEFAULT_DIR;
-    console.log('TARGET', target);
 
     createStructure(target, Boolean(options.recomp)).then(() => {
         createComponent(target, component_name, Boolean(options.recomp));
