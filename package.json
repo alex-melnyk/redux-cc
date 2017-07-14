@@ -7,6 +7,10 @@
         "start": "node index.js",
         "test": "node index.js -s -e"
     },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/alex-melnyk/redux-cc.git"
+    },
     "author": "Alex Melnyk",
     "license": "ISC",
     "dependencies": {
