@@ -100,18 +100,6 @@ function makeComponent(dest, component_name) {
 }
 
 function createComponent(dest, name, wrapped) {
-    try {
-        if (wrapped) {
-            fs.mkdirSync(path.join(dest, ACTIONS_DIR));
-            fs.mkdirSync(path.join(dest, REDUCERS_DIR));
-            fs.mkdirSync(path.join(dest, CONTAINERS_DIR));
-        }
-
-        fs.mkdirSync(path.join(dest, COMPONENTS_DIR));
-    } catch (ex) {
-        // console.log(err);
-    }
-
     if (wrapped) {
         makeAction(dest, name);
         makeReducer(dest, name);

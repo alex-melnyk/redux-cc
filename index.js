@@ -11,7 +11,8 @@ const options = commandLineArgs([
     {name: 'comp', alias: 'c', type: String},
     {name: 'recomp', alias: 'r', type: String},
     {name: 'struct', alias: 's', type: String},
-    {name: 'example', alias: 'e', type: Boolean}
+    {name: 'example', alias: 'e', type: Boolean},
+    {name: 'directory', alias: 'd', type: String, defaultOption: true}
 ]);
 
 console.log(options);
@@ -24,9 +25,12 @@ if (options.struct || options.struct === null) {
 if (options.comp || options.recomp) {
     const component_name = ucc(options.comp || options.recomp);
 
-    createStructure(options.struct || DEFAULT_DIR);
+    const target = options.struct || options.directory || DEFAULT_DIR;
+    console.log('TARGET', target);
 
-    createComponent(component_name, Boolean(options.recomp));
+    createStructure(target, Boolean(options.recomp)).then(() => {
+        createComponent(target, component_name, Boolean(options.recomp));
+    });
 }
 
 if (options.example) {

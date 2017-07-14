@@ -4,14 +4,23 @@ const fs = require('fs');
 const path = require('path');
 
 const STRUCTURE_DIRS = [
-    'actions', 'reducers', 'containers', 'components'
+    'actions', 'reducers', 'containers'
 ];
 
-function createStructure(dest) {
+function createStructure(dest, full = false) {
     const destination  = path.resolve(dest);
+
     fs.stat(destination, (err, stats) => {
         if (!stats && err.code === 'ENOENT') {
             fs.mkdirSync(destination);
+        }
+    });
+
+    const components = path.join(destination, 'components');
+
+    fs.stat(components, (err, stats) => {
+        if (!stats && err.code === 'ENOENT') {
+            fs.mkdirSync(components);
         }
     });
 
@@ -24,6 +33,10 @@ function createStructure(dest) {
             }
         });
     });
+
+    return new Promise((resolve) => {
+        return resolve();
+    })
 }
 
 module.exports = createStructure;
