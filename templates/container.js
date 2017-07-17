@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import {COMPONENT_NAME} from '../components/COMPONENT_FILE_NAME';
+import COMPONENT_NAME from '../components/COMPONENT_FILE_NAME';
 
 import {
     changeValue
