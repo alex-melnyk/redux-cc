@@ -3,6 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const lcc = require('camelcase');
+const ucc = require('uppercamelcase');
 
 const TEMPLATES_DIR = './templates';
 const GEN_DIR = '.gen';
@@ -69,9 +70,9 @@ function makeContainer(dest, component_name) {
             .replace(R_ACTION, component_name.toLowerCase())
             .replace(R_REDUCER, component_name.toLowerCase())
             .replace(R_COMPONENT, component_name)
-            .replace(R_COMPONENT_FILE, component_name.toLowerCase());
+            .replace(R_COMPONENT_FILE, component_name);
 
-        fs.writeFile(path.join(dest, 'containers', component_name.toLowerCase() + '.js'), content, (err) => {
+        fs.writeFile(path.join(dest, 'containers', component_name + 'Container.js'), content, (err) => {
             if (err) throw err;
 
             console.log('Container file has been saved!');
@@ -91,7 +92,7 @@ function makeComponent(dest, component_name) {
         const content = data.toString('utf-8')
             .replace(R_COMPONENT, component_name);
 
-        fs.writeFile(path.join(dest, 'components', component_name.toLowerCase() + '.jsx'), content, (err) => {
+        fs.writeFile(path.join(dest, 'components', component_name + '.jsx'), content, (err) => {
             if (err) throw err;
 
             console.log('Component file has been saved!');
